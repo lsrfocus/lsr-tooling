@@ -3,5 +3,28 @@
   "version": "1.0.0",
   "description": "Generic tooling for JS apps",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write '*.js'"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "proseWrap": "always"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "peerDependencies": {
+    "husky": "4.3.6",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0"
+  },
+  "devDependencies": {
+    "husky": "4.3.6",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0"
+  }
 }
