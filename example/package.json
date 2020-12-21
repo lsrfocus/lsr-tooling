@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write '*.js'"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "proseWrap": "always"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "husky": "4.3.6",
+    "lsr-tooling": "1.0.0",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0"
+  }
+}
