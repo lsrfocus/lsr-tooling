@@ -1,0 +1,7 @@
+{
+  "name": "lsr-tooling",
+  "version": "1.0.0",
+  "description": "Generic tooling for JS apps",
+  "main": "index.js",
+  "license": "MIT"
+}
