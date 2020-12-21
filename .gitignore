@@ -1,2 +1,21 @@
-# IDE
-.idea/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Dependencies.
+node_modules/
+
+# Secrets.
+.env
+
+# Artifacts.
+dist/
+build/
+
+# Logs.
+*.log
+
+# IDE files.
+.idea/*
+!.idea/runConfigurations
+
+# Misc.
+.DS_Store
