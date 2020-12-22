@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "test": "./test.sh",
     "format": "prettier --write '*.js'"
   },
   "prettier": {
