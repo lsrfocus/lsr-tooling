@@ -2,7 +2,9 @@
 
 Generic tooling for JS apps. Included:
 
-- Code auto-formatting
+- Code auto-formatting (Prettier)
+- Code linting (ESLint)
+- Configs (e.g. git)
 
 ## Usage
 
@@ -27,6 +29,7 @@ Generic tooling for JS apps. Included:
    ```
 
 1. Copy in [.eslintrc](example/.eslintrc)
+1. Copy in [.gitignore](.gitignore)
 
 ## Independent instructions (optional)
 
