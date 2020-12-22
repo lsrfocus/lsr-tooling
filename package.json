@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "README": "⚠️ DO NOT COPY THESE SCRIPTS, THEY ARE FOR TESTING ONLY. USE THE README. ⚠️",
     "format": "prettier --write '*.js'"
   },
   "prettier": {

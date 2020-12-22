@@ -5,8 +5,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "README": "⚠️ DO NOT COPY THESE SCRIPTS, THEY ARE FOR TESTING ONLY. USE THE README. ⚠️",
     "test": "./test.sh",
-    "format": "prettier --write '*.js'"
+    "format": "prettier --write '*.js'",
+    "lint": "eslint --ext .js . --rule 'no-unused-vars: 0'"
   },
   "prettier": {
     "singleQuote": true,
@@ -19,8 +21,15 @@
     }
   },
   "devDependencies": {
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-cooperka": "1.0.4",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "4.0.0",
     "husky": "4.3.6",
-    "lsr-tooling": "1.0.0",
+    "lsr-tooling": "1.1.0",
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0"
   }
