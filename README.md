@@ -1,10 +1,21 @@
 # LSR Tooling
 
-Generic tooling for JS apps. Included:
+Generic tooling for JS apps. Included guides:
 
-- Code auto-formatting (Prettier)
-- Code linting (ESLint)
+- Auto-formatting tool (Prettier)
+- Linting tool (ESLint)
+- Styling library (Material UI)
+- Static compilation library (React Static)
 - Configs (e.g. git)
+
+## Purpose
+
+Rather than providing a "boilerplate app" to start from, this is instead
+formatted as a guide that can be used for new AND existing apps, as well as
+tracking changes to help upgrade old apps.
+
+It can be use by anyone, though I customized the style to my personal
+preferences.
 
 ## Usage
 
