@@ -4,6 +4,7 @@ Generic tooling for JS apps. Included guides:
 
 - Auto-formatting tool (Prettier)
 - Linting tool (ESLint)
+- Testing library (Jest)
 - Styling library (Material UI)
 - Static compilation library (React Static)
 - Configs (e.g. git)
@@ -19,12 +20,14 @@ preferences.
 
 ## Usage
 
+### Install basic tools
+
 1. `npx install-peerdeps --dev --yarn lsr-tooling`
 1. Add to your package.json:
 
    ```json
      "scripts": {
-       "format": "prettier --write '*.js' --write '{src,__mocks__}/**/*.js'",
+       "format": "prettier --write '*.{js,md}' --write '{src}/**/*.{js,md}'",
        "lint": "eslint --ext .js ."
      },
      "prettier": {
@@ -43,6 +46,38 @@ preferences.
 1. Copy in [.gitignore](.gitignore)
 
 ### Optional next steps
+
+#### Test with [Jest](https://jestjs.io/docs/en/getting-started)
+
+1. `yarn add --dev jest jest-watch-typeahead` (automatically includes
+   babel-jest)
+1. Add to your package.json:
+
+   ```json
+     "scripts": {
+       "test": "jest",
+     },
+     "jest": {
+       "roots": [
+         "<rootDir>/src"
+       ],
+       "testMatch": [
+         "<rootDir>/src/**/*.test.js"
+       ],
+       "transform": {
+         "\\.js$": "babel-jest",
+         "\\.css$": "<rootDir>/config/jest/cssTransform.js",
+         "^(?!.*\\.(js|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+       },
+       "watchPlugins": [
+         "jest-watch-typeahead/filename",
+         "jest-watch-typeahead/testname"
+       ],
+       "resetMocks": true
+     },
+   ```
+
+1. Copy in [config/jest](example/config) transformers
 
 #### Style with [Material UI](https://material-ui.com/getting-started/installation/)
 
