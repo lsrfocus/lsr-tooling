@@ -50,16 +50,15 @@ preferences.
 1. Use it:
 
    ```js
-   import { compose } from 'ramda';
    import {
      createMuiTheme,
-     withStyles,
-     Reboot,
-     MuiThemeProvider,
-   } from 'material-ui';
+     ThemeProvider,
+     CssBaseline,
+     makeStyles,
+   } from '@material-ui/core';
    import 'fontsource-roboto';
 
-   const muiTheme = createMuiTheme({
+   const theme = createMuiTheme({
      // https://material-ui-next.com/customization/themes/#typography
      typography: {
        // Account for base font-size of 62.5%.
@@ -67,11 +66,22 @@ preferences.
      },
    });
 
-   export default compose(withStyles(styles))(() => (
-     <MuiThemeProvider theme={muiTheme}>
-       <Reboot />
-     </MuiThemeProvider>
-   ));
+   const useStyles = makeStyles({
+     /* ... */
+   });
+
+   const App = () => {
+     const classes = useStyles();
+
+     return (
+       <ThemeProvider theme={theme}>
+         <CssBaseline />
+         {/* ... */}
+       </ThemeProvider>
+     );
+   };
+
+   export default App;
    ```
 
    ```css
@@ -101,78 +111,61 @@ preferences.
 #### Render with [React Static](https://github.com/react-static/react-static)
 
 1. `npx react-static create`
-1. Integrate with MUI:
+1. Integrate with MUI
+   ([docs](https://github.com/react-static/react-static/blob/master/docs/guides/material-ui.md)):
+
+   ```js
+   // plugins/jss-provider/node.api.js
+   import { ServerStyleSheets } from '@material-ui/core';
+
+   export default () => ({
+     beforeRenderToHtml: (App, { meta }) => {
+       // eslint-disable-next-line no-param-reassign
+       meta.muiSheets = new ServerStyleSheets();
+       return meta.muiSheets.collect(App);
+     },
+
+     headElements: (elements, { meta }) => [
+       ...elements,
+       meta.muiSheets.getStyleElement(),
+     ],
+   });
+   ```
 
    ```js
    // static.config.js
+   // Docs: https://github.com/react-static/react-static/blob/master/docs/config.md
+   export default {
+     plugins: ['jss-provider'],
 
-   /**
-    * Render and capture the MUI CSS.
-    * https://material-ui.com/guides/server-rendering
-    */
-   renderToHtml: (render, Component, renderMeta) => {
-     const sheetsRegistry = new SheetsRegistry();
-     const generateClassName = createGenerateClassName();
-     const muiTheme = createMuiTheme(theme);
+     /* eslint-disable react/prop-types */
+     Document: ({ Html, Head, Body, children }) => (
+       <Html lang="en">
+         <Head>
+           <meta charSet="utf-8" />
+           <meta
+             name="viewport"
+             content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"
+           />
 
-     const html = render(
-       <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
-         <MuiThemeProvider theme={muiTheme} sheetsManager={new Map()}>
-           <Component />
-         </MuiThemeProvider>
-       </JssProvider>,
-     );
+           <title>Foo</title>
 
-     // eslint-disable-next-line no-param-reassign
-     renderMeta.jssStyles = sheetsRegistry.toString();
+           {/* Favicon: https://realfavicongenerator.net/ */}
+           {/* Open Graph markup: https://developers.facebook.com/tools/debug/og/object/ */}
+           {/* Analytics: https://matomo.org/ */}
+         </Head>
 
-     return html;
-   },
-
-   /* eslint-disable react/prop-types */
-   Document: ({ Html, Head, Body, children, siteData, renderMeta }) => (
-     <Html lang="en">
-       <Head>
-         <meta charSet="utf-8" />
-         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-
-         <title>Foo</title>
-
-         {/* Favicon: https://realfavicongenerator.net/ */}
-         {/* Open Graph markup: https://developers.facebook.com/tools/debug/og/object/ */}
-         {/* Analytics: https://matomo.org/ */}
-       </Head>
-
-       <Body>
-         <noscript>
-           You need to enable JavaScript to run this app.
-         </noscript>
-
-         {children}
-
-         <style id={string.JSS_SERVER_SIDE_ID}>{renderMeta.jssStyles}</style>
-       </Body>
-     </Html>
-   ),
-   /* eslint-enable */
+         <Body>
+           <noscript>You need to enable JavaScript to run this app.</noscript>
+           {children}
+         </Body>
+       </Html>
+     ),
+     /* eslint-enable */
+   };
    ```
 
-   ```js
-   class App {
-     /**
-      * Remove the statically injected CSS.
-      * https://material-ui.com/guides/server-rendering
-      */
-     componentDidMount() {
-       const jssStyles = document.getElementById(string.JSS_SERVER_SIDE_ID);
-       if (jssStyles && jssStyles.parentNode) {
-         jssStyles.parentNode.removeChild(jssStyles);
-       }
-     }
-   }
-   ```
-
-## Independent instructions (optional)
+## Independent dependencies (optional)
 
 If you want to pick and choose your tools instead of getting them all at once:
 

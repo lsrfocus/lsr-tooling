@@ -6,9 +6,17 @@ node_modules/
 # Secrets.
 .env
 
-# Artifacts.
-dist/
+# Build artifacts.
+lib/
 build/
+dist/
+artifacts/
+tmp/
+out/
+.firebase/
+
+# Testing.
+coverage/
 
 # Logs.
 *.log
@@ -19,3 +27,4 @@ build/
 
 # Misc.
 .DS_Store
+.eslintcache
