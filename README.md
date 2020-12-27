@@ -28,7 +28,8 @@ preferences.
    ```json
      "scripts": {
        "format": "prettier --write '*.{js,md}' --write '{src}/**/*.{js,md}'",
-       "lint": "eslint --ext .js ."
+       "lint": "eslint --ext .js .",
+       "clean": "rm -rf build dist artifacts tmp"
      },
      "prettier": {
        "singleQuote": true,
@@ -49,8 +50,8 @@ preferences.
 
 #### Test with [Jest](https://jestjs.io/docs/en/getting-started)
 
-1. `yarn add --dev jest jest-watch-typeahead` (automatically includes
-   babel-jest)
+1. `yarn add --dev jest jest-watch-typeahead react-test-renderer` (automatically
+   includes babel-jest)
 1. Add to your package.json:
 
    ```json
@@ -145,7 +146,20 @@ preferences.
 
 #### Render with [React Static](https://github.com/react-static/react-static)
 
-1. `npx react-static create`
+1. Create a template app: `npx react-static create`
+1. Either use their template directly or copy in core files; add to your
+   package.json:
+
+```json
+     "scripts": {
+       "start": "react-static start",
+       "build": "react-static build",
+       "stage": "yarn run build --staging && serve dist -p 3000",
+       "analyze": "yarn run build --analyze",
+       "deploy": "yarn run build && firebase deploy"
+     },
+```
+
 1. Integrate with MUI
    ([docs](https://github.com/react-static/react-static/blob/master/docs/guides/material-ui.md)):
 
