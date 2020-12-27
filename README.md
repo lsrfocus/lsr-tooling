@@ -7,6 +7,7 @@ Generic tooling for JS apps. Included guides:
 - Testing library (Jest)
 - Styling library (Material UI)
 - Static compilation library (React Static)
+- Static hosting (Netlify)
 - Configs (e.g. git)
 
 ## Purpose
@@ -155,8 +156,7 @@ preferences.
        "start": "react-static start",
        "build": "react-static build",
        "stage": "yarn run build --staging && serve dist -p 3000",
-       "analyze": "yarn run build --analyze",
-       "deploy": "yarn run build && firebase deploy"
+       "analyze": "yarn run build --analyze"
      },
 ```
 
@@ -213,6 +213,17 @@ preferences.
      /* eslint-enable */
    };
    ```
+
+#### Deploy with [Netlify](https://www.netlify.com/pricing/)
+
+1. `yarn add --dev netlify-cli`
+1. Add to your package.json:
+
+```json
+     "scripts": {
+       "deploy": "yarn run build && netlify deploy"
+     },
+```
 
 ## Independent dependencies (optional)
 
