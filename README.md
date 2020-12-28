@@ -56,8 +56,8 @@ preferences.
 
 #### Test with [Jest](https://jestjs.io/docs/en/getting-started)
 
-1. `yarn add --dev jest jest-watch-typeahead react-test-renderer` (automatically
-   includes babel-jest)
+1. `yarn add --dev --exact jest jest-watch-typeahead react-test-renderer`
+   (automatically includes babel-jest)
 1. Add to your package.json:
 
    ```json
@@ -88,7 +88,7 @@ preferences.
 
 #### Style with [Material UI](https://material-ui.com/getting-started/installation/)
 
-1. `yarn add @material-ui/core @material-ui/icons fontsource-roboto`
+1. `yarn add --exact @material-ui/core @material-ui/icons fontsource-roboto`
 1. Use it:
 
    ```js
@@ -221,7 +221,7 @@ preferences.
 
 #### Deploy with [Netlify](https://www.netlify.com/pricing/)
 
-1. `yarn add --dev netlify-cli`
+1. `yarn add --dev --exact netlify-cli`
 1. Add to your package.json:
 
 ```json
@@ -236,7 +236,7 @@ If you want to pick and choose your tools instead of getting them all at once:
 
 ### Code auto-formatting
 
-1. `yarn add --dev prettier husky pretty-quick`
+1. `yarn add --dev --exact prettier husky pretty-quick`
 1. Modify package.json as described in [Usage](#usage)
 
 ### Linting
