@@ -42,6 +42,11 @@ preferences.
          "pre-commit": "pretty-quick --staged"
        }
      },
+     "browserslist": [
+       "defaults",
+       "not IE 11",
+       "maintained node versions"
+     ]
    ```
 
 1. Copy in [.eslintrc](example/.eslintrc)
