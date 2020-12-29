@@ -100,7 +100,7 @@ preferences.
    } from '@material-ui/core';
    import '@fontsource/roboto';
 
-   const theme = createMuiTheme({
+   const muiTheme = createMuiTheme({
      // https://material-ui-next.com/customization/themes/#typography
      typography: {
        // Account for base font-size of 62.5%.
@@ -116,7 +116,7 @@ preferences.
      const classes = useStyles();
 
      return (
-       <ThemeProvider theme={theme}>
+       <ThemeProvider theme={muiTheme}>
          <CssBaseline />
          {/* ... */}
        </ThemeProvider>
@@ -160,7 +160,8 @@ preferences.
      "scripts": {
        "start": "react-static start",
        "build": "react-static build",
-       "stage": "yarn run build --staging && serve dist -p 3000",
+       "serve": "serve dist -p 3000",
+       "stage": "yarn run build --staging && yarn run serve",
        "analyze": "yarn run build --analyze"
      },
 ```
