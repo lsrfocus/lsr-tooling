@@ -88,7 +88,7 @@ preferences.
 
 #### Style with [Material UI](https://material-ui.com/getting-started/installation/)
 
-1. `yarn add --exact @material-ui/core @material-ui/icons fontsource-roboto`
+1. `yarn add --exact @material-ui/core @material-ui/icons @fontsource/roboto`
 1. Use it:
 
    ```js
@@ -98,7 +98,7 @@ preferences.
      CssBaseline,
      makeStyles,
    } from '@material-ui/core';
-   import 'fontsource-roboto';
+   import '@fontsource/roboto';
 
    const theme = createMuiTheme({
      // https://material-ui-next.com/customization/themes/#typography
