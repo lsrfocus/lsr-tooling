@@ -35,7 +35,15 @@ preferences.
      "prettier": {
        "singleQuote": true,
        "trailingComma": "all",
-       "proseWrap": "always"
+       "proseWrap": "always",
+       "overrides": [
+         {
+           "files": "static.config.js",
+           "options": {
+             "printWidth": 120
+           }
+         }
+       ]
      },
      "husky": {
        "hooks": {
@@ -153,6 +161,8 @@ preferences.
 #### Render with [React Static](https://github.com/react-static/react-static)
 
 1. Create a template app: `npx react-static create`
+1. OR just install `yarn add --exact react-static react-hot-loader` and copy
+   files from another app
 1. Either use their template directly or copy in core files; add to your
    package.json:
 
