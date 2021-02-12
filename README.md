@@ -94,6 +94,25 @@ preferences.
 
 1. Copy in [config/jest](example/config) transformers
 
+#### Render with [React Static](https://github.com/react-static/react-static)
+
+1. Create a template app: `npx react-static create`
+1. OR just install
+   `yarn add --exact react react-dom react-hot-loader react-static react-static-plugin-reach-router react-static-plugin-sitemap react-static-plugin-source-filesystem`
+   and copy files from another app
+1. Either use their template directly or copy in core files; add to your
+   package.json:
+
+```json
+     "scripts": {
+       "start": "react-static start",
+       "build": "react-static build",
+       "serve": "serve dist -p 3000",
+       "stage": "yarn run build --staging && yarn run serve",
+       "analyze": "yarn run build --analyze"
+     },
+```
+
 #### Style with [Material UI](https://material-ui.com/getting-started/installation/)
 
 1. `yarn add --exact @material-ui/core @material-ui/icons @fontsource/roboto`
@@ -158,25 +177,7 @@ preferences.
    }
    ```
 
-#### Render with [React Static](https://github.com/react-static/react-static)
-
-1. Create a template app: `npx react-static create`
-1. OR just install `yarn add --exact react-static react-hot-loader` and copy
-   files from another app
-1. Either use their template directly or copy in core files; add to your
-   package.json:
-
-```json
-     "scripts": {
-       "start": "react-static start",
-       "build": "react-static build",
-       "serve": "serve dist -p 3000",
-       "stage": "yarn run build --staging && yarn run serve",
-       "analyze": "yarn run build --analyze"
-     },
-```
-
-1. Integrate with MUI
+1. Integrate with react-static
    ([docs](https://github.com/react-static/react-static/blob/master/docs/guides/material-ui.md)):
 
    ```js
