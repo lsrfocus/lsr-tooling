@@ -76,6 +76,7 @@ preferences.
        "roots": [
          "<rootDir>/src"
        ],
+       "setupFilesAfterEnv": ["<rootDir>/config/jest/setupJest.js"],
        "testMatch": [
          "<rootDir>/src/**/*.test.js"
        ],
@@ -228,6 +229,11 @@ preferences.
        </Html>
      ),
      /* eslint-enable */
+
+     devServer: {
+       // Allow connecting via proxy URLs like `http://my-site.test`
+       disableHostCheck: true,
+     },
    };
    ```
 
